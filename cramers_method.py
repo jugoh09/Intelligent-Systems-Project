@@ -1,3 +1,5 @@
+# Original cramers method
+
 import numpy as np
 import math
 

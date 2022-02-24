@@ -1,3 +1,5 @@
+# Code to read a csv file
+
 import csv
 import numpy as np
 import math
