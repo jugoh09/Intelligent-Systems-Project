@@ -1,3 +1,4 @@
+# An upadted version of cramers method
 import numpy as np
 import math
 

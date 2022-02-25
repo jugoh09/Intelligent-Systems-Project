@@ -1,3 +1,4 @@
+# Just a test on user input
 meals_a_day = int(input("How many meals you had today?:"))
 
 foods = ["Bread","Fish","Milk"]
