@@ -56,6 +56,11 @@ print("Protein for f3: ", proteins_f3)
 print("Fats for f3: ", fats_f3)
 
 print()
+print(b1)
+print(b2)
+print(b3)
+
+print()
 
 print("M = ", M)
 print()
