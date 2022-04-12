@@ -1,3 +1,4 @@
+from this import d
 import numpy as np
 import math
 
@@ -42,13 +43,28 @@ carbs_f3 = grams_f3 * 0.05
 proteins_f3 = grams_f3 * 0.03
 fats_f3 = grams_f3 * 0.01
 
+#high carbs
+recommend_bread = 5
+#high protein
+recommend_chicken = 18
+#high fats
+recommend_olive = 10
+
+
 print()
 
 # Calcaulates the REMAINDING number of carbs, proteins and fats user should consume based on their daily calorie
 # intake
+
 x1 =  b1 - carbs_f1 - carbs_f2 - carbs_f3 
-x2 =  b1 - proteins_f1 - proteins_f2 - proteins_f3 
-x3 =  b1 - fats_f1 - fats_f2 - fats_f3 
+x2 =  b2 - proteins_f1 - proteins_f2 - proteins_f3 
+x3 =  b3 - fats_f1 - fats_f2 - fats_f3 
+
+rx1 = x1/recommend_bread
+rx2 = x2/recommend_chicken
+rx3 = x3/recommend_olive
+
+
 
 
 print("Carbs for f1: ", carbs_f1)
@@ -79,5 +95,10 @@ print("Carbs in grams needed for user: ", x1)
 print("Proteins in grams needed for user: ", x2)
 print("Fats in grams needed for user: ", x3)
 
-
-
+print("We recommend these foods in your diet!")
+print("1. Bread")
+print("2. Chicken")
+print("3. Olive oil")
+print("You should take %d grams of bread" % rx1)
+print("You should take %d grams of chicken" % rx2)
+print("You should take %d grams of olive oil" % rx3)
