@@ -16,18 +16,36 @@ def main():
     add_is_done =''
 
     cal_input = int(input("What is your daily calorie target?: "))
+    while cal_input <= 0:
+        print("Calorie intake must be more than 0!")
+        cal_input = int(input("What is your daily calorie target?: "))
 
-    dail_cal_carbs = cal_input * 0.4
+    carbs_percent = int(input("How many percent(%) of carbs do you want to consume?: "))
+    while carbs_percent <= 0:
+        print("Number of pecentage must be greater than 0!")
+        carbs_percent = int(input("How many percent(%) of carbs do you want to consume?: "))
+
+    proteins_percent = int(input("How many percent(%) of proteins do you want to consume?: "))
+    while proteins_percent <= 0:
+        print("Number of pecentage must be greater than 0!")
+        proteins_percent = int(input("How many percent(%) of proteins do you want to consume?: "))
+
+    fats_percent = int(input("How many percent(%) of fats do you want to consume?: "))
+    while fats_percent <= 0:
+        print("Number of pecentage must be greater than 0!")
+        fats_percent = int(input("How many percent(%) of fats do you want to consume?: "))
+
+    dail_cal_carbs = cal_input * (carbs_percent/100)
     b1 = dail_cal_carbs / 4
     total_carbs = 0
     add_total_carbs = 0
 
-    dail_cal_prot = cal_input * 0.3
+    dail_cal_prot = cal_input * (proteins_percent/100)
     b2 = dail_cal_prot / 4
     total_pro = 0
     add_total_pro = 0
 
-    dail_cal_prot = cal_input * 0.3
+    dail_cal_prot = cal_input * (fats_percent/100)
     b3 = dail_cal_prot / 4
     total_fats = 0
     add_total_fats = 0
@@ -121,8 +139,6 @@ def main():
     print("Updated total carbs needed = %d g " %new_x1)
     print("Updated total proteins needed = %d g "%new_x2)
     print("Updated total fats needed = %d g "%new_x3)
-
-
 
 def findfood(food_list,gram):
     found = False
