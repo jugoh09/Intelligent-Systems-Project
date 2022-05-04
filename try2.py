@@ -15,10 +15,14 @@ def main():
     is_done = ''
     add_is_done =''
 
+    intro()
+
     cal_input = int(input("What is your daily calorie target?: "))
     while cal_input <= 0:
         print("Calorie intake must be more than 0!")
         cal_input = int(input("What is your daily calorie target?: "))
+
+    print()
 
     carbs_percent = int(input("How many percent(%) of carbs do you want to consume?: "))
     while carbs_percent <= 0:
@@ -34,6 +38,7 @@ def main():
     while fats_percent <= 0:
         print("Number of pecentage must be greater than 0!")
         fats_percent = int(input("How many percent(%) of fats do you want to consume?: "))
+
 
     dail_cal_carbs = cal_input * (carbs_percent/100)
     b1 = dail_cal_carbs / 4
@@ -51,6 +56,7 @@ def main():
     add_total_fats = 0
 
     while is_done != 'y':
+        print()
         findfood(food_list,gram)
         is_done=input("Is that all of your foods? (y/n):")
 
@@ -114,32 +120,52 @@ def main():
     print("You need to eat %.2f g of avocado" %z)
     
     print()
-    while add_is_done != 'y':
-        add_findfood(add_food_list,add_gram)
-        add_is_done=input("Is that all of your foods? (y/n):")
+    more_food = input("Anything else to add? (y/n): ")
+    if more_food == 'y':
+        while add_is_done != 'y':
+            add_findfood(add_food_list, add_gram)
+            add_is_done = input("Is that all of your foods? (y/n): ")
 
-    add_food(add_food_list,add_gram)
-    add_carbs_need(add_food_list,add_gram,add_carbs_lst)
-    add_pro_need(add_food_list,add_gram,add_pro_lst)
-    add_fats_need(add_food_list,add_gram,add_fats_lst)
+        add_food(add_food_list,add_gram)
+        add_carbs_need(add_food_list,add_gram,add_carbs_lst)
+        add_pro_need(add_food_list,add_gram,add_pro_lst)
+        add_fats_need(add_food_list,add_gram,add_fats_lst)
 
-    for ele in range(0, len(add_carbs_lst)):
-        add_total_carbs = add_total_carbs + add_carbs_lst[ele]
-        new_x1 = x1 - add_total_carbs
+        for ele in range(0, len(add_carbs_lst)):
+            add_total_carbs = add_total_carbs + add_carbs_lst[ele]
+            new_x1 = x1 - add_total_carbs
 
-    for ele in range(0, len(add_pro_lst)):
-        add_total_pro = add_total_pro + add_pro_lst[ele]
-        new_x2 = x2 - add_total_pro
+        for ele in range(0, len(add_pro_lst)):
+            add_total_pro = add_total_pro + add_pro_lst[ele]
+            new_x2 = x2 - add_total_pro
 
-    for ele in range(0, len(add_fats_lst)):
-        add_total_fats = add_total_fats + add_fats_lst[ele]
-        new_x3 = x3 - add_total_fats
+        for ele in range(0, len(add_fats_lst)):
+            add_total_fats = add_total_fats + add_fats_lst[ele]
+            new_x3 = x3 - add_total_fats
 
-    print()
-    print("Updated total carbs needed = %d g " %new_x1)
-    print("Updated total proteins needed = %d g "%new_x2)
-    print("Updated total fats needed = %d g "%new_x3)
+        print()
+        print("Updated total carbs needed = %d g " %new_x1)
+        print("Updated total proteins needed = %d g "%new_x2)
+        print("Updated total fats needed = %d g "%new_x3)
+        print("Thank you have a nice day!")
+        
 
+    elif more_food == 'n':
+        print("Updated total carbs needed = %d g " %x1)
+        print("Updated total proteins needed = %d g "%x2)
+        print("Updated total fats needed = %d g "%x3)
+        print("Thank you have a nice day!")
+
+    else:
+        print("Please enter 'y' or 'n'")
+        more_food = input("Anything else to add? (y/n): ")
+
+
+    # while add_is_done != 'y':
+    #     print()
+    #     add_findfood(add_food_list,add_gram)
+    #     add_is_done=input("Is that all of your foods? (y/n):")
+    
 def findfood(food_list,gram):
     found = False
     with open("MyFoodData.csv", "r") as f:
@@ -212,7 +238,7 @@ def add_findfood(add_food_list,add_gram):
     found = False
     with open("MyFoodData.csv", "r") as f:
         reader = csv.reader(f)
-        to_find = input("Anything else to add: ").title()
+        to_find = input("Enter food: ").title()
         for item in reader:
             if to_find in item[1]:
                 add_food_list.append(to_find)
@@ -237,6 +263,7 @@ def add_food(add_food_list,add_gram):
             for row in reader:
                 for item in add_food_list:
                     if item in row[1]:
+
                         carbs = (add_gram[i]*(float(row[4]))/100)
                         proteins= (add_gram[i]*(float(row[3]))/100)
                         fats = (add_gram[i]*(float(row[2]))/100)
@@ -276,6 +303,12 @@ def add_fats_need(add_food_list,add_gram,add_fats_lst):
                     if item in row[1]:
                         fats = (add_gram[i]*(float(row[2]))/100)
                         add_fats_lst.append(fats)
+
+def intro():
+    print("===================================")
+    print("WELCOME TO THE NUTRITION CALCULATOR")
+    print("===================================")
+    print()
 
 main()
 
