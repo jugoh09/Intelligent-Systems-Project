@@ -1,3 +1,3 @@
 # Intelligent-Systems-Project
-Nutrition Calculator\n
+## Nutrition Calculator
 Run try2.py on master branch, have fun!
