@@ -1,3 +1,3 @@
 # Intelligent-Systems-Project
 Nutrition Calculator
-Run excel_2.py on master branch, have fun!
+Run try2.py on master branch, have fun!
